@@ -15,6 +15,13 @@ export const checkEmail = async (email = "") => {
   }
 };
 
+export const checkPassword = async (password = "") => {
+  const validPassword = bcryptjs.compareSync(password, userSchema.password);
+  if (!validPassword) {
+    throw new Error(`El usuario / contraseña no son correctos`);
+  }
+};
+
 export const checkId = async (id = "") => {
   const findId = await userSchema.findById(id);
   if (!findId) {
