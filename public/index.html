@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <title>Document</title>
+</head>
+<body>
+  <h1>Prueba de Google</h1>
+  <br>
+
+  <div id="g_id_onload"
+          data-client_id="669023164426-5dl9jmde3fghpagk7c6k0c8j65eigm1f.apps.googleusercontent.com"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt="false">
+      </div>
+      <div 
+          class="g_id_signin"
+          data-type="standard"
+          data-size="large" 
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="rectangular"
+          data-logo_alignment="left">
+      </div>
+      
+</body>
+<script>
+  const button = document.getElementById("singOut")
+  async function  handleCredentialResponse(response) {
+      const body = {googleToken: response.credential}
+      const data = await fetch("http://localhost:8080/api/auth/googleLogin",{
+      method:"POST",
+      headers: {
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(body)
+     }).then(resp => resp.json())
+     console.log(data)
+  }
+
+</script>
+</html>
