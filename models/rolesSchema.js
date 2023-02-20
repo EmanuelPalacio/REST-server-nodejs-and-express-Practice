@@ -6,5 +6,5 @@ const roles = Schema({
     required: [true, "el rol es obligatorio"],
   },
 });
-const rolesSchema = model("roles", roles);
-export default rolesSchema;
+const RolesSchema = model("roles", roles);
+export default RolesSchema;

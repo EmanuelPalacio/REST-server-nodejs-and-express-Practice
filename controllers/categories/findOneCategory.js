@@ -1,10 +1,10 @@
 import { request, response } from "express";
-import categoriesSchema from "../../models/categoriesSchema.js";
+import CategoriesSchema from "../../models/categoriesSchema.js";
 
 const findOneCategory = async (req = request, res = response) => {
   const { id } = req.params;
   try {
-    const findCategory = await categoriesSchema.findById(id).populate("user");
+    const findCategory = await CategoriesSchema.findById(id).populate("user");
     if (findCategory) {
       res.status(200).json({
         ok: true,

@@ -1,14 +1,14 @@
 import { request, response } from "express";
-import categoriesSchema from "../../models/categoriesSchema.js";
+import CategoriesSchema from "../../models/categoriesSchema.js";
 
 const updateCategory = async (req = request, res = response) => {
   const { name } = req.body;
   const { id } = req.params;
 
   try {
-    const findCategory = await categoriesSchema.findById(id);
+    const findCategory = await CategoriesSchema.findById(id);
     if (findCategory) {
-      const update = await categoriesSchema.findByIdAndUpdate(
+      const update = await CategoriesSchema.findByIdAndUpdate(
         id,
         { name },
         //new en true , devuelve la colección actualizada

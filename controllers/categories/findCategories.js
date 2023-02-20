@@ -1,13 +1,12 @@
 import { response, request } from "express";
-import categoriesSchema from "../../models/categoriesSchema.js";
+import CategoriesSchema from "../../models/categoriesSchema.js";
 
 const findCategories = async (req = request, res = response) => {
   const { limit = 5, from = 0 } = req.query;
   try {
     const [total, categories] = await Promise.all([
-      categoriesSchema.count(),
-      categoriesSchema
-        .find()
+      CategoriesSchema.count(),
+      CategoriesSchema.find()
         .populate("user")
         .skip(Number(from))
         .limit(Number(limit)),

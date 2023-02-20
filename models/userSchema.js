@@ -32,5 +32,5 @@ const user = Schema({
     default: false,
   },
 });
-const userSchema = model("users", user);
-export default userSchema;
+const UserSchema = model("users", user);
+export default UserSchema;

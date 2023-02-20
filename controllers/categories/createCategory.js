@@ -1,10 +1,10 @@
 import { request, response } from "express";
-import categoriesSchema from "../../models/categoriesSchema.js";
+import CategoriesSchema from "../../models/categoriesSchema.js";
 
 const createCategory = async (req = request, res = response) => {
   const { name } = req.body;
   const id = req.id;
-  const findCategory = await categoriesSchema.findOne({ name });
+  const findCategory = await CategoriesSchema.findOne({ name });
   if (findCategory) {
     return res.status(400).json({
       ok: false,
@@ -17,7 +17,7 @@ const createCategory = async (req = request, res = response) => {
   };
 
   try {
-    const category = await categoriesSchema.create(data);
+    const category = await CategoriesSchema.create(data);
     await category.save();
 
     res.status(201).json({
