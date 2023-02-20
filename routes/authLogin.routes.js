@@ -4,7 +4,7 @@ import { validateGoogleLogin, validateLogin } from "../middlewares/index.js";
 
 const authRoutes = Router();
 
-authRoutes.post("/login", validateLogin, login);
-authRoutes.post("/googleLogin", validateGoogleLogin, googleLogin);
+authRoutes.get("/login", validateLogin, login);
+authRoutes.get("/googleLogin", validateGoogleLogin, googleLogin);
 
 export default authRoutes;
