@@ -1,3 +1,5 @@
+import CategoriesSchema from "../models/categoriesSchema.js";
+import ProductSchema from "../models/productShechema.js";
 import RolesSchema from "../models/rolesSchema.js";
 import UserSchema from "../models/userSchema.js";
 
@@ -26,5 +28,19 @@ export const checkId = async (id = "") => {
   const findId = await UserSchema.findById(id);
   if (!findId) {
     throw new Error(`El usuario ${id} no existe en la base de datos`);
+  }
+};
+
+export const checkCategory = async (id = "") => {
+  const findId = await CategoriesSchema.findById(id);
+  if (!findId) {
+    throw new Error(`La categoria ${id} no existe en la base de datos`);
+  }
+};
+
+export const checkproduct = async (id = "") => {
+  const findId = await ProductSchema.findById(id);
+  if (!findId) {
+    throw new Error(`El producto ${id} no existe en la base de datos`);
   }
 };

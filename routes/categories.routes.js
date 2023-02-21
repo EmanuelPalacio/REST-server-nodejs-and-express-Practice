@@ -20,7 +20,12 @@ const categoriesRoutes = Router();
 categoriesRoutes.get("/", findCategories);
 categoriesRoutes.get("/:id", findOneCategory);
 // rutas privadas - token valido
-categoriesRoutes.post("/", validateToken, createCategory);
+categoriesRoutes.post(
+  "/",
+  validateToken,
+  [check("name", "El nombre es obligatorio").notEmpty(), checkValidator],
+  createCategory
+);
 categoriesRoutes.put(
   "/:id",
   validateToken,

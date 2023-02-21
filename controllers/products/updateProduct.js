@@ -1,24 +1,24 @@
 import { request, response } from "express";
-import CategoriesSchema from "../../models/categoriesSchema.js";
+import ProductSchema from "../../models/productShechema.js";
 
-const updateCategory = async (req = request, res = response) => {
-  const { name, user } = req.body;
+const updateProduct = async (req = request, res = response) => {
+  const { __V, user, _id, ...rest } = req.body;
   const { id } = req.params;
 
   try {
-    const findCategory = await CategoriesSchema.findById(id);
-    if (findCategory) {
-      user = req.id;
-      const update = await CategoriesSchema.findByIdAndUpdate(
+    const findProduct = await ProductSchema.findById(id);
+    if (findProduct) {
+      rest.user = req.id;
+      const update = await ProductSchema.findByIdAndUpdate(
         id,
-        { name, user },
+        rest,
         //new en true , devuelve la colección actualizada
         { new: true }
       );
       return res.status(400).json({
         ok: true,
         msg: "Actualizado con exito",
-        Category: update,
+        product: update,
       });
     }
     res.status(404).json({
@@ -32,4 +32,4 @@ const updateCategory = async (req = request, res = response) => {
     });
   }
 };
-export default updateCategory;
+export default updateProduct;

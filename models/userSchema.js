@@ -32,5 +32,12 @@ const user = Schema({
     default: false,
   },
 });
+//Metodo para renombrar id de mongo
+/* UsuarioSchema.methods.toJSON = function() {
+  const { __v, password, _id, ...usuario  } = this.toObject();
+  usuario.uid = _id;
+  return usuario;
+} */
+
 const UserSchema = model("users", user);
 export default UserSchema;

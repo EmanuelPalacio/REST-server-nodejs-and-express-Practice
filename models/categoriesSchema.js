@@ -11,5 +11,6 @@ const categories = Schema({
     required: true,
   },
 });
+
 const CategoriesSchema = model("categories", categories);
 export default CategoriesSchema;
