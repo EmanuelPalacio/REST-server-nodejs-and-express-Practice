@@ -5,6 +5,9 @@ const product = Schema({
     type: String,
     required: [true, "el nombre es obligatorio"],
   },
+  image: {
+    type: String,
+  },
   state: {
     type: Boolean,
     default: true,

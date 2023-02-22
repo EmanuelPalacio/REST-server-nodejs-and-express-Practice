@@ -25,7 +25,12 @@
           data-shape="rectangular"
           data-logo_alignment="left">
       </div>
-      
+<br>     
+<!-- subir un solo archivo -->
+<form action="/api/uploads/singleFile" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" />
+  <button type="submit">subir</button>
+</form>
 </body>
 <script>
   const button = document.getElementById("singOut")

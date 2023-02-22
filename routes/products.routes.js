@@ -36,9 +36,9 @@ productRoutes.put(
   validateToken,
   [
     check("category", "Tiene que ser un id de mongo")
-      .if(body("category").notEmpty())
+      .if(body("category").exists())
       .isMongoId(),
-    check("category").if(body("category").notEmpty()).custom(checkCategory),
+    check("category").if(body("category").exists()).custom(checkCategory),
     checkValidator,
   ],
   updateProduct
