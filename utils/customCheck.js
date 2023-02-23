@@ -44,3 +44,10 @@ export const checkproduct = async (id = "") => {
     throw new Error(`El producto ${id} no existe en la base de datos`);
   }
 };
+
+export const colecctionUpdate = async (colecction = "") => {
+  const colecctions = ["user", "products"];
+  if (!colecctions.includes(colecction)) {
+    throw new Error(`La colección no es valida`);
+  }
+};

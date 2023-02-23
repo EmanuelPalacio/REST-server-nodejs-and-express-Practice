@@ -1,5 +1,11 @@
 import { Router } from "express";
+import { param } from "express-validator";
 import multer from "multer";
+import updateImage from "../controllers/uploads/updateImage.js";
+import upload from "../controllers/uploads/upload.js";
+import checkValidator from "../middlewares/checkValidator.js";
+import { colecctionUpdate } from "../utils/customCheck.js";
+import { checkFile, validateToken } from "../middlewares/index.js";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -24,10 +30,26 @@ const storage = multer.diskStorage({
 }; */
 
 const uploadFile = multer({ storage });
-import upload from "../controllers/uploads/upload.js";
-
 const uploadsRoutes = Router();
 
-uploadsRoutes.post("/singleFile", uploadFile.single("file"), upload);
+uploadsRoutes.post(
+  "/singleFile",
+  validateToken,
+  uploadFile.single("file"),
+  upload
+);
+
+uploadsRoutes.put(
+  "/:colecction/:id",
+  validateToken,
+  [
+    param("id", "Tiene que ser un ID de mongo valida").isMongoId(),
+    param("colecction").custom(colecctionUpdate),
+    checkValidator,
+  ],
+  uploadFile.single("file"),
+  checkFile,
+  updateImage
+);
 
 export default uploadsRoutes;

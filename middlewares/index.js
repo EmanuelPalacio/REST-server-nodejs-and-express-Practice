@@ -1,3 +1,4 @@
+export { default as checkFile } from "./checkFile.js";
 export { default as checkValidator } from "./checkValidator.js";
 export { default as validateAdminRol } from "./validateAdminRol.js";
 export { default as validateCreateUser } from "./validateCreateUser.js";
