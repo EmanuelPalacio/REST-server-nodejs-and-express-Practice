@@ -7,3 +7,4 @@ export { default as validateGoogleLogin } from "./validateGoogleLogin.js";
 export { default as validateLogin } from "./validateLogin.js";
 export { default as validateToken } from "./validateToken.js";
 export { default as validateUpdateUser } from "./validateUpdateUser.js";
+export { default as verifyDestination } from "./verifyDestination.js";

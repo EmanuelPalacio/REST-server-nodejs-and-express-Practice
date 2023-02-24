@@ -14,10 +14,14 @@ const updateImage = async (req = request, res = response) => {
 
   colecction === "user" && (model = UserSchema);
   colecction === "products" && (model = ProductSchema);
+
   try {
     const data = await model.findById(id);
-    const pathUpload = path.join(__dirname, "../../uploads", data.image);
-
+    const pathUpload = path.join(
+      __dirname,
+      "../../uploads/" + colecction,
+      data.image
+    );
     if (fs.existsSync(pathUpload)) {
       fs.unlinkSync(path.join(pathUpload));
     }
