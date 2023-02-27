@@ -17,6 +17,10 @@ const user = Schema({
   image: {
     type: String,
   },
+  //image_id va a guar el public_id que viene de clodinary para facilitar la eliminacion de las imagenes en caso de ser requerido
+  image_id: {
+    type: String,
+  },
   rol: {
     type: String,
     required: true,
